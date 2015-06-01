@@ -1,0 +1,22 @@
+parameters:
+    ite_js.sf.extension.csrf_protection.class:          ITE\Js\Csrf\SF\CsrfProtectionSFExtension
+    ite_js.csrf_protection.twig.extension.link.class:   ITE\Js\Csrf\Twig\Extension\LinkExtension
+    ite_js.csrf_protection.event.listener.csrf.class:   ITE\Js\Csrf\EventListener\CsrfListener
+
+services:
+    ite_js.sf.extension.csrf_protection:
+        class: %ite_js.sf.extension.csrf_protection.class%
+        tags:
+            - { name: ite_js.sf.extension, alias: csrf_protection }
+
+    ite_js.csrf_protection.twig.extension.link:
+        class: %ite_js.csrf_protection.twig.extension.link.class%
+        arguments: [ @translator, @security.csrf.token_manager, %ite_js.csrf_protection.token_id% ]
+        tags:
+            - { name: twig.extension }
+
+    ite_js.csrf_protection.event.listener.csrf:
+        class: %ite_js.csrf_protection.event.listener.csrf.class%
+        arguments: [ @security.csrf.token_manager, %ite_js.csrf_protection.token_id% ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: -1 }

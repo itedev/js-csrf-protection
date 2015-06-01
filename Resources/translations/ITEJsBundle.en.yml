@@ -1,0 +1,3 @@
+csrf_protection:
+    link:
+        confirmation: Are you sure?

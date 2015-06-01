@@ -1,7 +1,7 @@
 {
   "name": "ite/js-csrf-protection",
   "type": "library",
-  "description": "Provide support of CSRF protection via JavaScript",
+  "description": "Provides CSRF protection for links and AJAX requests",
   "keywords": ["javascript", "jquery", "csrf"],
   "license": "MIT",
   "authors": [
