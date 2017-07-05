@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 class CsrfProtectionSFExtension extends SFExtension
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getConfiguration(ContainerBuilder $container)
     {
@@ -35,7 +35,7 @@ class CsrfProtectionSFExtension extends SFExtension
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function loadConfiguration(array $config, ContainerBuilder $container)
     {
@@ -48,7 +48,7 @@ class CsrfProtectionSFExtension extends SFExtension
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getJavascripts()
     {

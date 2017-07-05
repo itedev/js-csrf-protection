@@ -58,5 +58,4 @@ class CsrfListener
             throw new InvalidCsrfTokenException('The CSRF token is invalid');
         }
     }
-
 }

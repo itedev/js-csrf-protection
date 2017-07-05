@@ -2,8 +2,6 @@
 
 namespace ITE\Js\Csrf\Twig\Extension;
 
-use ITE\JsBundle\SF\SFInterface;
-use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use Twig_Extension;
@@ -35,9 +33,11 @@ class LinkExtension extends Twig_Extension
      * @param CsrfTokenManagerInterface $csrfTokenManager
      * @param string $csrfTokenId
      */
-    public function __construct(TranslatorInterface $translator, CsrfTokenManagerInterface $csrfTokenManager,
-        $csrfTokenId)
-    {
+    public function __construct(
+        TranslatorInterface $translator,
+        CsrfTokenManagerInterface $csrfTokenManager,
+        $csrfTokenId
+    ) {
         $this->translator = $translator;
         $this->csrfTokenManager = $csrfTokenManager;
         $this->csrfTokenId = $csrfTokenId;
@@ -54,7 +54,7 @@ class LinkExtension extends Twig_Extension
     }
 
     /**
-     * @param $method
+     * @param string $method
      * @param string|null $confirmation
      * @param string|null $csrfTokenId
      * @return string
@@ -66,7 +66,7 @@ class LinkExtension extends Twig_Extension
             $attr .= sprintf(' data-confirm="%s"', $this->getConfirmation($confirmation));
         }
         $attr .= sprintf(' data-csrf-token="%s"', $this->getCsrfTokenValue($csrfTokenId));
-        
+
         return $attr;
     }
 
@@ -76,7 +76,7 @@ class LinkExtension extends Twig_Extension
      */
     protected function getConfirmation($confirmation = null)
     {
-        $message = $confirmation ? $confirmation : 'csrf_protection.link.confirmation';
+        $message = $confirmation ? : 'csrf_protection.link.confirmation';
 
         return $this->translator->trans($message, [], 'ITEJsBundle');
     }
@@ -99,5 +99,4 @@ class LinkExtension extends Twig_Extension
     {
         return 'ite_js.csrf_protection.twig.extension.link';
     }
-
 }

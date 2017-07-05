@@ -69,5 +69,4 @@ class CsrfSecure extends ConfigurationAnnotation
     {
         return false;
     }
-
 }

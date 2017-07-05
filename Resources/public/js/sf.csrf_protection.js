@@ -5,7 +5,7 @@
 
   $(function() {
 
-    $('body').on('click', 'a[data-method]', function(e) {
+    $('body').on('click', 'a[data-csrf-token]', function(e) {
       var $this = $(this);
       e.preventDefault();
 
@@ -16,11 +16,9 @@
         }
       }
 
-      var csrfToken = $this.data('csrfToken');
-
       var $form = $('<form/>', {
         method: 'POST',
-        action: $this.attr('href'),
+        action: $this.attr('href')
       });
 
       var $methodInput = $('<input/>', {
@@ -30,6 +28,7 @@
       });
       $form.append($methodInput);
 
+      var csrfToken = $this.data('csrfToken');
       if ('undefined' !== typeof csrfToken) {
         var $csrfInput = $('<input/>', {
           name: '_token',
