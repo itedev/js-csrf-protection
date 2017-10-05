@@ -11,7 +11,10 @@
 
       var confirmMessage = $this.data('confirm');
       if ('undefined' !== typeof confirmMessage) {
-        if (!confirm(confirmMessage)) {
+        var event = $.Event('ite-confirm.csrf');
+        $this.trigger(event);
+
+        if (false === event.result) {
           return false;
         }
       }
